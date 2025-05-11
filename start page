@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Start Chatbot</title>
+  <title>Bot Fly Start Page</title>
   <style>
     body {
       margin: 0;
@@ -45,41 +45,41 @@
       font-size: 20px;
       margin-bottom: 40px;
     }
+
     .start-btn {
-  padding: 15px 30px;
-  font-size: 18px;
-  background-color: #ff7200;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.4s ease;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 0 12px rgba(255, 114, 0, 0.6);
-  position: relative;
-}
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #ff7200;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.4s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 0 12px rgba(255, 114, 0, 0.6);
+      position: relative;
+    }
 
-.start-btn:hover {
-  background-color: #fff;
-  color: #ff7200;
-  border: 2px solid #ff7200;
-  box-shadow: 0 0 18px 4px rgba(255, 114, 0, 0.7);
-}
+    .start-btn:hover {
+      background-color: #fff;
+      color: #ff7200;
+      border: 2px solid #ff7200;
+      box-shadow: 0 0 18px 4px rgba(255, 114, 0, 0.7);
+    }
 
-.start-btn span {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: center;
-  pointer-events: none; /* This allows full button to be clickable, not the inner image only */
-}
+    .start-btn span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      pointer-events: none;
+    }
 
-.start-btn img {
-  width: 30px;
-  height: 30px;
-}
-
+    .start-btn img {
+      width: 30px;
+      height: 30px;
+    }
 
     .bot {
       position: absolute;
@@ -154,7 +154,6 @@
         Start Chatbot
       </span>
     </button>
-    
   </div>
 
   <script>
@@ -162,18 +161,15 @@
       const bot = document.getElementById('bot');
       const container = document.getElementById('main-container');
 
-      // Fade out content
-      container.style.opacity = '0.3';
+      container.style.opacity = '0.3';         // Fade out the text
+      bot.style.opacity = '1';                 // Make the bot visible
 
-      // Show bot and trigger flying animation
-      bot.style.opacity = '1';
       setTimeout(() => {
-        bot.classList.add('fly');
+        bot.classList.add('fly');              // Trigger flying animation
       }, 300);
 
-      // Redirect to chatbot page
       setTimeout(() => {
-        window.location.href = "chatbot.html";
+        window.location.href = "chatbot.html"; // Redirect after animation
       }, 2200);
     }
   </script>
