@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internship Programs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 700px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      color: #111;
+    }
+
+    .card {
+      background: #f1f1f1;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .card button {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .card button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+    }
+
+    .close {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .modal ul {
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    .modal-footer {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .modal-footer button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .close-btn {
+      background: #6c757d;
+      color: #fff;
+    }
+
+    .ok-btn {
+      background: #007bff;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @media (max-width: 600px) {
+      .modal-content {
+        margin: 20% auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Internships</h1>
+
+  <div class="card">
+    <h2>Web development internship program</h2>
+    <button onclick="openModal('web')">view details</button>
+  </div>
+
+  <div class="card">
+    <h2>App development internship program</h2>
+    <button onclick="openModal('app')">view details</button>
+  </div>
+
+  <div class="card">
+    <h2>Python internship program</h2>
+    <button onclick="openModal('python')">view details</button>
+  </div>
+
+  <div class="card">
+    <h2>Java internship program</h2>
+    <button onclick="openModal('java')">view details</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modal-title">Internship</h2>
+      <span class="close" onclick="closeModal()">&times;</span>
+    </div>
+    <ul id="modal-details">
+      <!-- Dynamic content -->
+    </ul>
+    <div class="modal-footer">
+      <button class="close-btn" onclick="closeModal()">Close</button>
+      <button class="ok-btn" onclick="closeModal()">Understood</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('modal');
+  const title = document.getElementById('modal-title');
+  const details = document.getElementById('modal-details');
+
+  const internships = {
+    web: {
+      title: "Web development internship program",
+      info: [
+        "Duration: 1 to 2 months",
+        "Location: Remote",
+        "Stipend: Not specified",
+        "Start Date: 05 November 2023"
+      ]
+    },
+    app: {
+      title: "App development internship program",
+      info: [
+        "Duration: 6 weeks",
+        "Location: Hybrid",
+        "Stipend: ₹3000",
+        "Start Date: 01 July 2024"
+      ]
+    },
+    python: {
+      title: "Python internship program",
+      info: [
+        "Duration: 8 weeks",
+        "Location: Virtual",
+        "Stipend: Performance-based",
+        "Start Date: 10 August 2024"
+      ]
+    },
+    java: {
+      title: "Java internship program",
+      info: [
+        "Duration: 2 months",
+        "Location: Remote",
+        "Stipend: ₹2000",
+        "Start Date: 15 September 2024"
+      ]
+    }
+  };
+
+  function openModal(type) {
+    const data = internships[type];
+    title.innerText = data.title;
+    details.innerHTML = data.info.map(i => `<li><strong>${i.split(":")[0]}:</strong> ${i.split(":")[1]}</li>`).join('');
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+</body>
+</html>
